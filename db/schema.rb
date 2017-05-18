@@ -11,23 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418011313) do
+ActiveRecord::Schema.define(version: 20170508005638) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "quession_id"
     t.string   "content"
-    t.boolean  "is_correct"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_correct",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "answers", ["quession_id"], name: "index_answers_on_quession_id"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "information"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "lessions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "category_id"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "lessions", ["category_id"], name: "index_lessions_on_category_id"
 
   create_table "quessions", force: :cascade do |t|
     t.integer  "lession_id"
@@ -40,21 +51,24 @@ ActiveRecord::Schema.define(version: 20170418011313) do
 
   create_table "sentences", force: :cascade do |t|
     t.integer  "test_id"
-    t.integer  "quessions_id"
+    t.integer  "quession_id"
     t.integer  "answer_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "sentences", ["answer_id"], name: "index_sentences_on_answer_id"
-  add_index "sentences", ["quessions_id"], name: "index_sentences_on_quessions_id"
+  add_index "sentences", ["quession_id"], name: "index_sentences_on_quession_id"
   add_index "sentences", ["test_id"], name: "index_sentences_on_test_id"
 
   create_table "tests", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "lession_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.datetime "started_at"
+    t.datetime "finnished_at"
+    t.string   "status",       default: "none"
   end
 
   add_index "tests", ["lession_id"], name: "index_tests_on_lession_id"

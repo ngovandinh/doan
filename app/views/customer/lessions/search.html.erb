@@ -1,0 +1,6 @@
+<div class="row">
+    <% @lessions.each do |lession|  %>
+      <ul><li><%= link_to lession.name, customer_lession_path(lession) %></a></li>
+     </ul>
+    <% end %>
+</div>

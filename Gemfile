@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 # gem "rails_admin"
+gem "jquery-countdown-rails"
+gem "ckeditor"
 gem "rails", "4.2.6"
 gem "faker", "1.4.2"
 gem "config"

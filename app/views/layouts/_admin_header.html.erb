@@ -4,7 +4,7 @@
 <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Ruby Admin</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -16,7 +16,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><%= current_user.name unless current_user.nil?  %></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -38,20 +38,20 @@
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Categories <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><%= link_to "Manage Categories", "#", method: :get %></li>
-                      <li><%= link_to "New Category",  "#", method: :get %></li>
+                      <li><%= link_to "Manage Categories", admin_categories_path, method: :get %></li>
+                      <li><%= link_to "New Category",  new_admin_category_path, method: :get %></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Subcategories <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Lessions <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><%= link_to "Manage Subcategories", "#", method: :get %></li>
-                      <li><%= link_to "New Subcategory",  "#", method: :get %></li>
+                      <li><%= link_to "Manage Lession", admin_lessions_path, method: :get %></li>
+                      <li><%= link_to "New Lession",  new_admin_lession_path, method: :get %></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Product <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Quessions <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><%= link_to "Manage products", "#", method: :get %></li>
-                      <li><%= link_to "New product",  "#", method: :get %></li>
+                      <li><%= link_to "Manage Quessions", admin_quessions_path, method: :get %></li>
+                      <li><%= link_to "New Quessions",  new_admin_quession_path, method: :get %></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-bar-chart-o"></i> Products <span class="fa fa-chevron-down"></span></a>

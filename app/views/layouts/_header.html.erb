@@ -1,0 +1,124 @@
+<div id="top">
+  <div class="container">
+    <div class="col-md-6 offer" data-animate="fadeInDown">
+      <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">
+        <%= t "offer" %></a>
+      <a href="#"><%= t "orders_off" %></a>
+    </div>
+    <div class="col-md-6" data-animate="fadeInDown">
+      <ul class="menu">
+        <% if logged_in? %>
+          <li><%= link_to t("profile"), customer_user_path(current_user), method: :get %></li>
+          <li><%= link_to t("setting"), edit_customer_user_path(current_user) %></li>
+          <li><%= link_to t("logout"), customer_session_path(current_user),
+            method: :delete %></li>
+        <% else %>
+          <li><a href="#" data-toggle="modal" data-target="#login-modal">
+            <%= t "login" %></a></li>
+          <li><%= link_to t("register"), new_customer_user_path, method: :get %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="modal fade" id="login-modal" tabindex="-1"
+    role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="Login"><%= t "login" %></h4>
+        </div>
+        <div class="modal-body">
+        <%= form_for(:session, url: customer_sessions_path) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control",
+              placeholder: "email" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= link_to t("forget_password"), "#" %>
+            <%= f.password_field :password, class: "form-control",
+              placeholder: "password" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit t("login"), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <p class="text-center text-muted"><%= t "not_registered" %></p>
+        <p class="text-center text-muted"><%= link_to t("register"), new_customer_user_path %>
+          </a><%= t "easy_access_comment" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="container">
+          <!-- logo -->
+
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="index" data-animate-hover="bounce">
+                    <img src="/assets/logo.png" height="50" width="139" alt="Obaju logo" class="hidden-xs">
+                </a>
+            </div>
+            <!--/.navbar-header -->
+
+
+            <div class="navbar-collapse collapse" id="navigation">
+
+                <ul class="nav navbar-nav navbar-left">
+                    <li><%= link_to "Trang Chủ", root_path %></li>
+                    <% Category.all.each do |category|  %>
+                      <li class="dropdown yamm-fw">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><%= category.name %><b class="caret"></b></a>
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <div class="yamm-content">
+                                      <div class="row">
+                                        <% category.lessions.each do |lession|  %>
+                                          <div class="col-sm-4">
+                                              <ul><li><%= link_to lession.name, customer_lession_path(lession) %></a></li>
+                                              </ul>
+                                          </div>
+                                        <% end %>
+
+                                      </div>
+                                  </div>
+                                  <!-- /.yamm-content -->
+                              </li>
+                          </ul>
+                      </li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="navbar-buttons">
+
+                <div class="navbar-collapse collapse right" id="basket-overview">
+                    <%= link_to "Result", customer_tests_path, class: "btn btn-primary navbar-btn", method: :get %>
+                </div>
+                <!--/.nav-collapse -->
+
+                <div class="navbar-collapse collapse right" id="search-not-mobile">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse clearfix" id="search">
+                <%= form_for(:search_form, url: search_customer_lessions_path ,method: :get, remote: true, html:{ class: "navbar-form", role: "search"} ) do |f | %>
+                  <div class="input-group">
+                    <%= f.text_field :condition, class: "form-control", placeholder: "Search" %>
+                    <span class="input-group-btn">
+                       <%= f.button '<i class="fa fa-search"></i>'.html_safe , class: 'btn btn-primary', onclick: "this.form.submit();" %>
+                    </span>
+                  </div>
+                <% end %>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>

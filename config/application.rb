@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+require "csv"
+
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -24,5 +26,6 @@ module Doan
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << Rails.root.join("vendor")
     config.assets.paths << Rails.root.join("vendor","admin","images")
+    config.assets.paths << Rails.root.join("vendor","customer","img")
   end
 end

@@ -5,12 +5,13 @@ class Test < ActiveRecord::Base
   has_many :sentences, dependent: :destroy
 
   accepts_nested_attributes_for :sentences
+  default_scope -> { order(created_at: :desc) }
   # validates_associated :sentences
 
   def result
     count = 0
-    self.sentences.each do |sentence|
-      if !sentences.answer.nil? && sentences.answer.is_correct
+    self.sentences.each do |_sentence|
+      if !_sentence.answer.nil? && _sentence.answer.is_correct
         count += 1
       end
     end
@@ -24,7 +25,6 @@ class Test < ActiveRecord::Base
       quessions = Quession.where(lession_id: lession_id).order("RANDOM()").
         limit(Settings.number_of_quession)
      end
-
       quessions.each do |quession|
         self.sentences.create(quession_id: quession.id)
       end

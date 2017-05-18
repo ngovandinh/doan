@@ -1,7 +1,7 @@
 number_of_page: 5
 max_size: 5
 max_name: 50
-max_content: 140
+max_content: 100000
 max_address: 50
 max_phone: 11
 mini_number: 1
@@ -10,5 +10,7 @@ mini_price: 0
 max_price: 1000000
 max_email: 255
 mini_password: 6
-number_of_quession: 3
+number_of_quession: 5
 invalid_login: "Invalid email/password combination"
+doing_time: 180
+difference_time: 7 # tinh bang gio`

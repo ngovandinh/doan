@@ -1,0 +1,19 @@
+                <div class="col-md-9">
+
+                    <div class="box">
+                        <%= raw( @lession.content ) %>
+                    </div>
+
+
+                    <!-- /.products -->
+
+                    <div class="pages">
+
+                        <p class="loadMore">
+                            <%= link_to "Begin Test" , customer_tests_path(test: {lession_id: @lession.id}),  method: :post, class: "btn btn-primary btn-lg"  %>
+                        </p>
+                    </div>
+
+
+                </div>
+
