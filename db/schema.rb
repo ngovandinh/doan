@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508005638) do
+ActiveRecord::Schema.define(version: 20170617050353) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "quession_id"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20170508005638) do
     t.integer  "test_id"
     t.integer  "quession_id"
     t.integer  "answer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "mixedanswer", default: ""
   end
 
   add_index "sentences", ["answer_id"], name: "index_sentences_on_answer_id"
@@ -84,6 +85,8 @@ ActiveRecord::Schema.define(version: 20170508005638) do
     t.string   "is_admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "uid"
+    t.string   "provider"
   end
 
 end
