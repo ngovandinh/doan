@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 # gem "rails_admin"
+gem "jquery"
 gem "jquery-countdown-rails"
 gem "ckeditor"
 gem "rails", "4.2.6"
@@ -30,7 +31,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.20.0'
+  gem 'pg'
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '3.1.0'
 end
