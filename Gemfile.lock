@@ -99,7 +99,7 @@ GEM
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-    pg (0.21.0)
+    pg (0.20.0)
     puma (3.1.0)
     rack (1.6.5)
     rack-test (0.6.3)
@@ -189,7 +189,7 @@ DEPENDENCIES
   jquery-countdown-rails
   jquery-rails
   mini_magick (= 3.8.0)
-  pg
+  pg (~> 0.20.0)
   puma (= 3.1.0)
   rails (= 4.2.6)
   rails_12factor (= 0.0.2)
