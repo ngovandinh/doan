@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doan</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <%= render "layouts/admin_header" %>
+      <%= render "layouts/admin_topnavigation" %>
+      <!-- page content -->
+      <div class="right_col" role="main">
+          <%= yield %>
+      </div>
+    </div>
+  <%= render "layouts/admin_footer" %>
+  </div>
+</body>
+</html>

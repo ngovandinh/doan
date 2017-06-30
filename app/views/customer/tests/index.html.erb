@@ -1,0 +1,31 @@
+<%= provide(:title, "All Test") %>
+<div class="col-md-9">
+  <div class="col-md-4">
+    <%= form_for(:test, url: customer_tests_path ,method: :post, remote: true) do |f | %>
+      <div class="col-md-9">
+        <%= f.collection_select :lession_id, Lession.all, :id, :name,{}, {class: "form-control"} %>
+      </div>
+      <div class="col-md-3">
+        <%= f.submit "Start lession" ,class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <h1> All tests</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Created Time</th>
+            <th>Status</th>
+            <th>Lession</th>
+            <th>Started Time</th>
+            <th>Finnished Time</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%= render @tests %>
+        </tbody>
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

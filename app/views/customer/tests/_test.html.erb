@@ -1,0 +1,22 @@
+<tr id="tests-<%= test.id %>">
+  <td><%= (test.created_at + Settings.difference_time.hour).strftime("%Y-%m-%d %I:%M:%S %p")  %> </td>
+  <td><%= test.status %></td>
+  <td><%= test.lession.name %></td>
+    <% if !test.started_at.nil? %>
+  <td><%= (test.started_at + Settings.difference_time.hour).strftime("%Y-%m-%d %I:%M:%S %p") %></td>
+    <% else %>
+    <td></td>
+    <% end %>
+    <% if !test.finnished_at.nil? %>
+  <td><%= test.finnished_at + Settings.difference_time.hour %></td>
+    <% else %>
+    <td></td>
+    <% end %>
+    <% if test.status.eql?('none') %>
+  <td><%= link_to "Start" , start_customer_test_path(test), class: "btn btn-primary"  %></td>
+    <% elsif test.status.eql?('finnished') || Time.zone.now > (test.started_at + Settings.doing_time.second) %>
+        <td><%= link_to "Result", result_customer_test_path(test), class: "btn btn-primary"  %></td>
+      <% else %>
+        <td><%= link_to "Coninue", start_customer_test_path(test), class: "btn btn-primary"  %></td>
+    <% end %>
+</tr>

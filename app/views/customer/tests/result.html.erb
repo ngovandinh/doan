@@ -1,0 +1,21 @@
+<% provide(:title, "Result Test") %>
+<div class="col-md-9">
+<h1>Result Test</h1>
+<ol>
+  <% @test.sentences.each do |_sentence|  %>
+    <%= form_for(_sentence, url: customer_sentence_path ) do |quession|%>
+        <li>
+          <b><%= _sentence.quession.content %></b><br/>
+          <% _sentence.quession.answers.each do |answer| %>
+            <%= quession.radio_button :answer_id, answer.id , :disabled => :true, class: 'radio_button' %>
+              <%= answer.content %>
+              <br/>
+          <% end %>
+           <br/>
+        </li>
+    <% end %>
+  <% end %>
+
+</ol>
+<h3>Result: <%= @test.result %>/<%=  Settings.number_of_quession %></h3>
+<div class="col-md-9">

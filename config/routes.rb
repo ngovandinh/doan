@@ -1,4 +1,37 @@
 Rails.application.routes.draw do
+
+  namespace :customer do
+    resources :sessions
+    resources :lessions  do
+      collection do
+        get :search
+      end
+    end
+    resources :users
+    resources :tests do
+      member do
+        get  :start, :result
+        post :finnish
+      end
+    end
+    resources :sentences, only: [:update]
+    resources :staticpage, only: [:index]
+  end
+
+  root "customer/staticpage#index"
+  get   'login'   => 'sessions#new'
+  resources :sessions
+  namespace :admin do
+    resources :categories
+    resources :lessions
+    resources :quessions do
+      collection do
+        get :import_csv
+      end
+    end
+    resources :staticpage, only: [:index]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

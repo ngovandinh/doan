@@ -1,0 +1,2 @@
+module Customer::LessionsHelper
+end

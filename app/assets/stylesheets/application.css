@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require_tree ../../../vendor/customer/css/
+ *= require_tree ../../../vendor/admin/css/
+ *= require jquery.countdown
  */
+#timer {
+  position: fixed;
+  left: 25px;
+  top: 150px;
+  background-color: orange;
+}

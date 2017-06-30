@@ -1,0 +1,26 @@
+<% provide(:title, "Test") %>
+<div class="col-md-9">
+<h1>Test</h1>
+<ol>
+  <% @test.sentences.each do |_sentence|  %>
+    <li>
+      <%= form_for(_sentence, url: customer_sentence_path(_sentence) ) do |sentence|%>
+          <b><%= _sentence.quession.content %></b><br/>
+          <% _sentence.quession.answers.each do |answer| %>
+            <%= sentence.radio_button :answer_id, answer.id , :onchange => "this.form.submit();", class: 'radio_button' %>
+            <%= answer.content %>
+            <br />
+          <% end %>
+          <br/>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+<%= button_to "Finnish", finnish_customer_test_path(@test), id: "button_finnish", class: "btn btn-primary", method: :post, data: { confirm: "Are you sure?" } %>
+</div>
+
+<%= hidden_field_tag :remaining_time, @remaining_time %>
+<div id="timer">
+  <h3>Time remaining</h3>
+  <div id="clock"></div>
+</div>

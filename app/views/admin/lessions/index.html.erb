@@ -1,0 +1,38 @@
+<div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>All lessions <small>basic</small></h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Name Lession</th>
+                          <th>Name Category</th>
+                          <th>Change</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <% @lessions.each do |lession| %>
+                        <tr>
+                          <th scope="row"><%= lession.id %></th>
+                          <td><%= lession.name %></td>
+                          <td><%= lession.category.name %></td>
+                          <td><%= link_to "edit", edit_admin_lession_path(lession),
+                            method: :get, class: 'btn btn-default' %></td>
+                          <td><%= link_to "delete", admin_lession_path(lession),
+                            method: :delete, class: 'btn btn-danger',
+                            data: { confirm: "You sure?" } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                    </table>
+                  </div>
+                </div>
+                  <%= will_paginate @categories %>
+              </div>
+        </div>

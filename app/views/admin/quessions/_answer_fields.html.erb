@@ -1,0 +1,15 @@
+<fieldset>
+  <%= f.label :content, 'is correct' %>
+    <%= f.check_box :is_correct, style: 'width: auto' %>
+  <%= f.text_field :content, class: 'form-control' %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: 'remove_answer'  %>
+</fieldset>
+
+<script type="text/javascript">
+  $(".remove_answer").bind('click', function() {
+    $(this).prev('input[type=hidden]').val(1);
+    $(this).closest('fieldset').hide();
+    event.preventDefault();
+  });
+</script>
