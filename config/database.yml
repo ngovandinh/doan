@@ -23,5 +23,6 @@ test:
 production:
   adapter: postgresql
   database: name_postgresql
+  username: ngovandinh
   pool: 5
   timeout: 5000
